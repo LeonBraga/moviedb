@@ -1,0 +1,37 @@
+.movieList {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.movieList::-webkit-scrollbar {
+  display: none;
+}
+
+.movieList {
+  scroll-behavior: smooth;
+}
+
+.scrollArrow {
+  position: absolute;
+  width: 60px;
+  height: 180px;
+  align-content: center;
+  text-align: center;
+  top: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.rightArrow {
+  right: 0;
+}
+
+.leftArrow {
+  left: 80px;
+}
+
+.scrollArrow:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}

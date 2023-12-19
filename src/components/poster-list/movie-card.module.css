@@ -1,0 +1,68 @@
+.moviePoster {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.moviePoster:hover {
+  transform: scale(1.04);
+  transition: transform 0.3s ease;
+}
+
+.moviePoster img {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.moviePoster img:hover {
+  border: 4px solid #D65A31;
+  border-radius: 5px;
+}
+
+.moviePoster .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.moviePoster h6 {
+  color: white;
+}
+
+.title {
+  color: aliceblue;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: large;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.description {
+  color: aliceblue;
+  font-family: sans-serif;
+  max-width: 300px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overlay:hover {
+  opacity: 1;
+}

@@ -1,0 +1,89 @@
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 300px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #111; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.8s;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.5s;
+  text-align: left;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #d65a31;
+}
+
+.sidenav svg {
+  padding-top: 2px;
+}
+
+.sidenav h6 {
+  margin-left: 10px;
+  display: inline-block;
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sidenav.closed {
+  width: 80px;
+  background-color: #212121;
+}
+
+.sidenav.closed a {
+  padding-bottom: 24px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
+.overlay {
+  transition: background-color 0.5s;
+  background-color: #212121;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  margin-left: 300px;
+  transition: 0.8s;
+}
+
+.closed ~ .content {
+  margin-left: 100px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
