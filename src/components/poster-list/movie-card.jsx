@@ -12,13 +12,14 @@ const MoviePoster = ({ movie }) => {
   };
   const posterPath = movie.poster_path;
   const backdropPath = movie.backdrop_path;
+  const vote = Math.round(movie.vote_average * 10) / 10;
 
   return (
     <>
       <div className={`${styles.moviePoster}`} onClick={handleSelect}>
         {posterPath ? (
           <img
-            src={`https://image.tmdb.org/t/p/w300${backdropPath}` || DefaultImage}
+            src={`https://image.tmdb.org/t/p/w300${posterPath}` || DefaultImage}
             alt="Movie Poster"
           />
         ) : (
@@ -28,7 +29,7 @@ const MoviePoster = ({ movie }) => {
         <div className="details">
           <h3 className={styles.title}>{movie.title || movie.name}</h3>
           <div className={styles.description}>
-            Média {movie.vote_average} em {movie.vote_count} votos
+            Média {vote} em {movie.vote_count} votos
           </div>
           <div className={styles.description}>{movie.overview}</div>
         </div>

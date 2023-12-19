@@ -1,0 +1,12 @@
+.gallery {
+    margin-bottom: 10px;
+}
+
+.title {
+    display: block;
+    color: aliceblue;
+    font-size: larger;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+}

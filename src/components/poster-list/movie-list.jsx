@@ -51,8 +51,6 @@ const MovieList = ({ moviesList }) => {
 
   return (
     <div className={styles.movieList} id="movieList" ref={movieListRef}>
-      {movies && movies.map((movie, index) => <MoviePoster movie={movie} />)}
-      {isLoading && <p>Loading...</p>}
       {!isLoading && showLeftArrow && (
         <span
           className={`${styles.scrollArrow} ${styles.leftArrow}`}
@@ -62,6 +60,10 @@ const MovieList = ({ moviesList }) => {
           <ChevronLeftIcon fontSize="large" />
         </span>
       )}
+
+      {movies && movies.map((movie, index) => <MoviePoster movie={movie} />)}
+      {isLoading && <p>Loading...</p>}
+      
       {!isLoading && (
         <span
           className={`${styles.scrollArrow} ${styles.rightArrow}`}

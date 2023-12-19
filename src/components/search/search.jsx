@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import styles from "./search.module.css";
 
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTczMTJlOTEyMmFiMGY4OTMwYWM0YjRhNGJlMTFhMiIsInN1YiI6IjVhZmY0OWYzOTI1MTQxMzEyYTAwMDgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z5utamcPdK_tUOjC2nGGQzm7JlDXNjH_vgolD7c4ioo",
+  },
+};
+
 const SearchInput = ({ setFilteredMovies }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTczMTJlOTEyMmFiMGY4OTMwYWM0YjRhNGJlMTFhMiIsInN1YiI6IjVhZmY0OWYzOTI1MTQxMzEyYTAwMDgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z5utamcPdK_tUOjC2nGGQzm7JlDXNjH_vgolD7c4ioo",
-    },
-  };
 
   useEffect(() => {
     const filterMovies = async () => {
@@ -38,13 +39,15 @@ const SearchInput = ({ setFilteredMovies }) => {
   }, [searchTerm, setFilteredMovies]);
 
   return (
-    <input
-      type="text"
-      placeholder="Search movies..."
-      className={styles.searchInput}
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
+    <div className={styles.searchContainer}>
+      <input
+        type="text"
+        placeholder="Search ..."
+        className={styles.searchInput}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
   );
 };
 

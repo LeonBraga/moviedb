@@ -2,6 +2,7 @@
   display: flex;
   overflow-x: scroll;
   white-space: nowrap;
+  position: relative;
 }
 
 .movieList::-webkit-scrollbar {
@@ -13,14 +14,17 @@
 }
 
 .scrollArrow {
-  position: absolute;
-  width: 60px;
-  height: 180px;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  height: auto;
   align-content: center;
   text-align: center;
   top: 0;
+  padding: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .rightArrow {
@@ -28,7 +32,7 @@
 }
 
 .leftArrow {
-  left: 80px;
+  left: 0px;
 }
 
 .scrollArrow:hover {
