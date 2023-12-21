@@ -1,48 +1,66 @@
+:root {
+  --gradient-value: 0%;
+}
+
+
 .moviePoster {
   position: relative;
-  display: inline-block;
-  margin: 10px;
+  border-radius: 6px;
+  margin: 15px;
+  padding: 5px 5px 15px 5px;
+  background-color: #191c29;
   cursor: pointer;
+  height: fit-content;
 }
 
 .moviePoster:hover {
   transform: scale(1.04);
-  transition: transform 0.3s ease;
+  transition: all 1s;
 }
 
-.moviePoster img {
-  width: auto;
-  height: auto;
-  object-fit: cover;
-}
-
-.moviePoster img:hover {
-  border: 4px solid #d65a31;
+.moviePoster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #191c29;
+  z-index: -1;
   border-radius: 5px;
 }
 
-.moviePoster .overlay {
+.moviePoster::after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: -5px;
+  background: linear-gradient(90deg, #f11d28, #ffa12c, #f11d28);
+  z-index: -2;
+  opacity: 0;
+  border-radius: 5px;
+}
+
+@keyframes glow {
+  to {
+    background-position: 300%;
+  }
+}
+
+.moviePoster:hover::after {
+  border-radius: 5px;
+  opacity: 0.5;
+  transition: all 1s;
+  filter: blur(10px);
+  animation: glow 8s linear infinite;
+  background-size: 300%;
+}
+
+.moviePoster .image {
   width: auto;
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  font-weight: bold;
-  font-size: 24px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.moviePoster h6 {
-  color: white;
-}
-
-.title {
+.moviePoster .title {
   color: aliceblue;
   font-family: sans-serif;
   font-weight: bold;
@@ -56,19 +74,48 @@
   -webkit-line-clamp: 3;
 }
 
-.description {
+.moviePoster .description {
   color: aliceblue;
   font-family: sans-serif;
   max-width: 300px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-wrap;
   margin-top: 5px;
 }
 
-.overlay:hover {
-  opacity: 1;
+.moviePoster .details {
+  padding: 0 10px;
+}
+
+.circle {
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  width: 50px;
+  height: 50px;
+  margin: 0.5rem;
+  border-radius: 50%;
+  background: #ff872c;
+  overflow: hidden;
+  /* background-image: conic-gradient(#ffa12c var(--gradient-value), #fd3a2d 0); */
+}
+
+.circle .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  background: #000;
+  border-radius: 50%;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.75);
 }

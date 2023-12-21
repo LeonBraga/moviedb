@@ -3,6 +3,7 @@ import MovieList from "../components/poster-list/movie-list";
 import SearchInput from "../components/search/search";
 import styles from "./home.module.css";
 
+
 export default function Profile() {
   const [searchMovies, setSearchedMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
@@ -20,7 +21,7 @@ export default function Profile() {
   useEffect(() => {
     getBestratedMovies();
     getPopularMovies();
-  });
+  }, []);
 
   const getBestratedMovies = async () => {
     fetch(
@@ -51,18 +52,29 @@ export default function Profile() {
       <SearchInput setFilteredMovies={setSearchedMovies} />
       {searchMovies && searchMovies.length && (
         <div className={styles.gallery}>
-          <MovieList moviesList={searchMovies} />
+          <MovieList moviesList={searchMovies} backdrop="true" inline="true" />
         </div>
       )}
 
       <div className={styles.gallery}>
         <div className={styles.title}>Tendencias do momento</div>
-        <MovieList title="Top Rated" moviesList={trendingMovies} />
+        <MovieList
+          title="Top Rated"
+          moviesList={trendingMovies}
+          backdrop="false"
+          inline="true"
+          sinopse="true"
+        />
       </div>
 
       <div className={styles.gallery}>
         <div className={styles.title}>Os melhores </div>
-        <MovieList title="Top Rated" moviesList={popularMovies} />
+        <MovieList
+          title="Top Rated"
+          moviesList={popularMovies}
+          inline="true"
+          note="true"
+        />
       </div>
     </>
   );

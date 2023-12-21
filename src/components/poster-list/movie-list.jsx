@@ -4,8 +4,7 @@ import styles from "./movie-list.module.css";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
-
-const MovieList = ({ moviesList }) => {
+const MovieList = ({ moviesList, backdrop, inline, note, sinopse }) => {
   let scrollInterval;
   const [movies, setMovies] = useState([moviesList]);
   const [page, setPage] = useState(1);
@@ -50,8 +49,12 @@ const MovieList = ({ moviesList }) => {
   }, [moviesList]);
 
   return (
-    <div className={styles.movieList} id="movieList" ref={movieListRef}>
-      {!isLoading && showLeftArrow && (
+    <div
+      className={`${styles.movieList} ${inline ? styles.inline : ""}`}
+      id="movieList"
+      ref={movieListRef}
+    >
+      {inline && !isLoading && showLeftArrow && (
         <span
           className={`${styles.scrollArrow} ${styles.leftArrow}`}
           onMouseEnter={() => handleScroll("left")}
@@ -61,10 +64,19 @@ const MovieList = ({ moviesList }) => {
         </span>
       )}
 
-      {movies && movies.map((movie, index) => <MoviePoster movie={movie} />)}
+      {movies &&
+        movies.map((movie, index) => (
+          <MoviePoster
+            movie={movie}
+            key={index}
+            backdrop={backdrop}
+            note={note}
+            sinopse={sinopse}
+          />
+        ))}
       {isLoading && <p>Loading...</p>}
-      
-      {!isLoading && (
+
+      {inline && !isLoading && (
         <span
           className={`${styles.scrollArrow} ${styles.rightArrow}`}
           onMouseEnter={() => handleScroll("right")}

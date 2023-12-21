@@ -1,8 +1,13 @@
 .movieList {
   display: flex;
-  overflow-x: scroll;
   white-space: nowrap;
   position: relative;
+  padding: 10px 0;
+}
+
+.inline {
+  overflow-x: scroll;
+  flex-direction: row;
 }
 
 .movieList::-webkit-scrollbar {

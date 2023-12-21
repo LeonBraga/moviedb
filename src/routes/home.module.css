@@ -1,12 +1,16 @@
 .gallery {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .title {
     display: block;
     color: aliceblue;
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    margin: 10px 0 10px 10px;
+
 }
+
+
+
