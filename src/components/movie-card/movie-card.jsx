@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./movie-card.module.css";
 import DefaultImage from "./img/default_poster.jpg";
 
-const MoviePoster = ({ movie, backdrop, note, sinopse }) => {
+const MovieCard = ({ movie, backdrop, note, sinopse }) => {
   const handleSelect = () => {
     console.log("Selected");
   };
@@ -15,7 +15,7 @@ const MoviePoster = ({ movie, backdrop, note, sinopse }) => {
 
   return (
     <>
-      <div className={styles.moviePoster} onClick={handleSelect}>
+      <div className={styles.moviePoster} onClick={handleSelect} data-testid="movie-poster">
         {posterPath ? (
           <img
             src={imagePath || DefaultImage}
@@ -52,4 +52,4 @@ const MoviePoster = ({ movie, backdrop, note, sinopse }) => {
   );
 };
 
-export default MoviePoster;
+export default MovieCard;

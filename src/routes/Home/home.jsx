@@ -1,29 +1,28 @@
 import { useEffect, useState } from "react";
-import MovieList from "../components/poster-list/movie-list";
-import SearchInput from "../components/search/search";
+import MovieList from "../../components/movie-list/movie-list";
+import SearchInput from "../../components/search/search";
 import styles from "./home.module.css";
 
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTczMTJlOTEyMmFiMGY4OTMwYWM0YjRhNGJlMTFhMiIsInN1YiI6IjVhZmY0OWYzOTI1MTQxMzEyYTAwMDgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z5utamcPdK_tUOjC2nGGQzm7JlDXNjH_vgolD7c4ioo",
+  },
+};
 
-export default function Profile() {
+export default function Home() {
   const [searchMovies, setSearchedMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTczMTJlOTEyMmFiMGY4OTMwYWM0YjRhNGJlMTFhMiIsInN1YiI6IjVhZmY0OWYzOTI1MTQxMzEyYTAwMDgwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.z5utamcPdK_tUOjC2nGGQzm7JlDXNjH_vgolD7c4ioo",
-    },
-  };
-
   useEffect(() => {
-    getBestratedMovies();
+    getBestRatedMovies();
     getPopularMovies();
   }, []);
 
-  const getBestratedMovies = async () => {
+  const getBestRatedMovies = async () => {
     fetch(
       "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1",
       options
@@ -49,9 +48,11 @@ export default function Profile() {
 
   return (
     <>
-      <SearchInput setFilteredMovies={setSearchedMovies} />
-      {searchMovies && searchMovies.length && (
-        <div className={styles.gallery}>
+      <span data-testid="search">
+        <SearchInput setFilteredMovies={setSearchedMovies} />
+      </span>
+      {searchMovies && searchMovies.length > 0 && (
+        <div className={styles.gallery} data-testid="search-results">
           <MovieList moviesList={searchMovies} backdrop="true" inline="true" />
         </div>
       )}

@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MyList from "./routes/myList";
 import Profile from "./routes/profile";
 import Search from "./routes/search";
-import Home from "./routes/home";
+import Home from "./routes/Home/home";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +33,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    
-    <div className="App">
+    <div className="App" data-testid="app">
       <RouterProvider router={router} />
     </div>
   );

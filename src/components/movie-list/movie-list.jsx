@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import MoviePoster from "./movie-card";
+import MovieCard from "../movie-card/movie-card";
 import styles from "./movie-list.module.css";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -52,6 +52,7 @@ const MovieList = ({ moviesList, backdrop, inline, note, sinopse }) => {
     <div
       className={`${styles.movieList} ${inline ? styles.inline : ""}`}
       id="movieList"
+      data-testid="movieList"
       ref={movieListRef}
     >
       {inline && !isLoading && showLeftArrow && (
@@ -66,7 +67,7 @@ const MovieList = ({ moviesList, backdrop, inline, note, sinopse }) => {
 
       {movies &&
         movies.map((movie, index) => (
-          <MoviePoster
+          <MovieCard
             movie={movie}
             key={index}
             backdrop={backdrop}
@@ -79,6 +80,7 @@ const MovieList = ({ moviesList, backdrop, inline, note, sinopse }) => {
       {inline && !isLoading && (
         <span
           className={`${styles.scrollArrow} ${styles.rightArrow}`}
+          data-testid="rightArrow"
           onMouseEnter={() => handleScroll("right")}
           onMouseLeave={() => handleStopScroll()}
         >
