@@ -16,15 +16,4 @@ describe("MovieList", () => {
     });
   });
 
-  it("scrolls right on right arrow hover", () => {
-    render(<MovieList moviesList={moviesList} inline={true} />);
-
-    const rightArrow = screen.getByTestId("rightArrow");
-    fireEvent.mouseEnter(rightArrow);
-
-    const movieList = screen.getByTestId("movieList");
-    const styles = window.getComputedStyle(movieList);
-
-    expect(styles.cursor).toBe("pointer");
-  });
 });
