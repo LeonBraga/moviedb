@@ -20,6 +20,7 @@ const Sidebar = () => {
     <>
       <div
         id="mySidenav"
+        data-testid="sidebar"
         className={`${styles.sidenav} ${sidebar ? '' : styles.closed}`}
         onMouseEnter={showSideBar}
         onMouseLeave={hideSideBar}

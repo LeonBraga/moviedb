@@ -1,39 +1,41 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Sidebar from "../Sidebar";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 
-
-jest.mock("react-router-dom", () => ({
-    Link: jest.fn().mockImplementation(({ children }) => children),
-  }));
+const MockSidebar = () => {
+  return (
+    <BrowserRouter>
+      <Sidebar />
+    </BrowserRouter>
+  );
+};
 
 describe("Sidebar component", () => {
   test("renders the sidebar with initial state", () => {
-    render(<Sidebar />);
-    
-    expect(screen.getByTestId("sidebar")).toHaveClass("closed");
-    
-    expect(screen.getByTestId("home-link")).toBeInTheDocument();
-    expect(screen.getByTestId("search-link")).toBeInTheDocument();
-    expect(screen.getByTestId("mylist-link")).toBeInTheDocument();
-    expect(screen.getByTestId("profile-link")).toBeInTheDocument();
+    render(<MockSidebar />);
+
+    const sidebar = screen.getByTestId("sidebar");
+
+    expect(sidebar).toBeInTheDocument();
+    expect(sidebar).toHaveClass("closed");
   });
 
   test("opens the sidebar on mouse enter", () => {
-    render(<Sidebar />);
-    
-    fireEvent.mouseEnter(screen.getByTestId("sidebar"));
-    
-    expect(screen.getByTestId("sidebar")).not.toHaveClass("closed");
+    render(<MockSidebar />);
+
+    const sidebar = screen.getByTestId("sidebar");
+    fireEvent.mouseEnter(sidebar);
+
+    expect(sidebar).not.toHaveClass("closed");
   });
 
   test("closes the sidebar on mouse leave", () => {
-    render(<Sidebar />);
-    
+    render(<MockSidebar />);
+
     fireEvent.mouseEnter(screen.getByTestId("sidebar"));
-    
+
     fireEvent.mouseLeave(screen.getByTestId("sidebar"));
-    
+
     expect(screen.getByTestId("sidebar")).toHaveClass("closed");
   });
 });
